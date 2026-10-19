@@ -1,0 +1,2 @@
+# Mantenido por compatibilidad: ahora todo está en requirements.txt
+-r requirements.txt

@@ -1,0 +1,35 @@
+{% extends "tienda/base.html" %}
+{% block content %}
+    <section class="hero">
+      <div class="container">
+        <div>
+          <h1>Compra uno y llévate otro igual.</h1>
+          <p>Promoción 1x1 en {{ empresa.nombre }}. Pagas una unidad y la segunda va por nuestra cuenta. Regístrate y te contactamos para confirmar tu producto.</p>
+          <a class="btn btn-primary" href="{% url 'registro' %}">Quiero mi 1x1</a>
+          <a class="btn btn-ghost" href="{% url 'catalogo' %}">Ver productos</a>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="capsule one"><i></i><i></i></div>
+          <div class="capsule two"><i></i><i></i></div>
+          <div class="badge"><div>1x1<small>2.ª unidad gratis</small></div></div>
+        </div>
+      </div>
+    </section>
+    <div class="container benefits">
+      <div class="benefit"><h3>Atención farmacéutica</h3><p>Personal capacitado para resolver tus dudas.</p></div>
+      <div class="benefit"><h3>Productos garantizados</h3><p>Marcas autorizadas y con registro sanitario.</p></div>
+      <div class="benefit"><h3>Promoción clara</h3><p>Cada producto muestra sus condiciones.</p></div>
+    </div>
+    {% if destacados %}
+    <section class="section">
+      <div class="container">
+        <h2>Productos con 1x1</h2>
+        <p class="lead">Una muestra de lo que tenemos en promoción.</p>
+        <div class="products">
+          {% for producto in destacados %}{% include "tienda/_producto.html" %}{% endfor %}
+        </div>
+        <p style="margin-top:24px"><a class="btn btn-primary" href="{% url 'catalogo' %}">Ver todo el catálogo</a></p>
+      </div>
+    </section>
+    {% endif %}
+{% endblock %}

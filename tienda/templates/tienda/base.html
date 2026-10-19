@@ -1,0 +1,49 @@
+{% load static %}<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Inicio{% endblock %} · {{ empresa.nombre }}</title>
+  <meta name="description" content="{% block description %}{{ empresa.nombre }}: compra un producto y llévate otro igual gratis con nuestra promoción 1x1.{% endblock %}">
+  <meta property="og:title" content="{% block ogtitle %}{{ empresa.nombre }} · Promoción 1x1{% endblock %}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_GT">
+  <link rel="icon" href="{% static 'tienda/img/logo.png' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'tienda/css/styles.css' %}">
+</head>
+<body>
+  {% with actual=request.resolver_match.url_name %}
+  <div class="topbar">
+    <div class="container">
+      <span>{{ empresa.horario }}</span>
+      <span>Teléfono: {{ empresa.telefono }} · {{ empresa.correo }}</span>
+    </div>
+  </div>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="{% url 'inicio' %}"><img src="{% static 'tienda/img/logo.png' %}" alt="{{ empresa.nombre }}, inicio"></a>
+      <nav class="nav" aria-label="Principal">
+        <a href="{% url 'inicio' %}"{% if actual == 'inicio' %} aria-current="page"{% endif %}>Inicio</a>
+        <a href="{% url 'catalogo' %}"{% if actual == 'catalogo' %} aria-current="page"{% endif %}>Productos</a>
+        <a href="{% url 'como_funciona' %}"{% if actual == 'como_funciona' %} aria-current="page"{% endif %}>Cómo funciona</a>
+        <a class="cart-link" href="{% url 'registro' %}">Regístrate</a>
+      </nav>
+    </div>
+    <div class="stripes"></div>
+  </header>
+  {% endwith %}
+  <main>
+{% block content %}{% endblock %}
+  </main>
+  <footer class="site-footer">
+    <div class="stripes"></div>
+    <div class="container">
+      <p><strong>{{ empresa.nombre }}</strong> · © {% now "Y" %} Todos los derechos reservados · <a href="{% url 'privacidad' %}">Aviso de privacidad</a></p>
+      <p>Promoción 1x1 válida en los productos indicados, hasta agotar existencias. Consulte a su médico o farmacéutico antes de usar cualquier producto de salud.</p>
+    </div>
+  </footer>
+</body>
+</html>

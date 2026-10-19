@@ -1,0 +1,9 @@
+{% extends "tienda/base.html" %}
+{% block title %}Página no encontrada{% endblock %}
+{% block content %}
+    <section class="section"><div class="container error-page">
+      <h1>404</h1>
+      <p class="lead">No encontramos la página que buscas.</p>
+      <a class="btn btn-primary" href="{% url 'inicio' %}">Volver al inicio</a>
+    </div></section>
+{% endblock %}

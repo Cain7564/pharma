@@ -1,0 +1,11 @@
+{% extends "admin/index.html" %}
+{% block content %}
+<section class="panel-welcome"><span class="eyebrow">CENTRO DE CONTROL</span><h1>Todo listo para cuidar mejor.</h1><p>Gestiona tus registros, cadenas y medicamentos desde un solo lugar.</p>{% if perms.tienda.view_registro %}<a class="panel-link" href="{% url 'mapa' %}">Explorar mapa de Guatemala →</a>{% endif %}</section>
+<div class="panel-stats">
+{% if perms.tienda.view_registro %}<a href="{% url 'admin:tienda_registro_changelist' %}"><span>Registros de clientes</span><strong>{{ panel_registros }}</strong><small>Consultar solicitudes →</small></a>{% endif %}
+{% if perms.tienda.view_producto %}<a href="{% url 'admin:tienda_producto_changelist' %}"><span>Medicamentos</span><strong>{{ panel_productos }}</strong><small>{{ panel_pendientes }} sin inventario registrado</small></a><button type="button" class="stat-alert" onclick="document.getElementById('chat-toggle').click()"><span>Requieren reposición</span><strong>{{ panel_alertas }}</strong><small>Consultar asistente →</small></button>{% endif %}
+{% if perms.tienda.view_cadena %}<a href="{% url 'admin:tienda_cadena_changelist' %}"><span>Cadenas activas</span><strong>{{ panel_cadenas }}</strong><small>Administrar opciones →</small></a>{% endif %}
+</div>
+<h2 class="section-heading">Herramientas de administración</h2>
+{{ block.super }}
+{% endblock %}

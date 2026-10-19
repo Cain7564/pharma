@@ -1,0 +1,24 @@
+{% extends "tienda/base.html" %}
+{% block title %}Cómo funciona{% endblock %}
+{% block content %}
+    <div class="page-head"><div class="container"><h1>Cómo funciona</h1><p>Tres pasos, sin letra pequeña.</p></div></div>
+    <section class="section">
+      <div class="container">
+        <ol class="steps">
+          <li><strong>Elige un producto</strong><br>Mira el catálogo y revisa las condiciones de cada uno.</li>
+          <li><strong>Regístrate</strong><br>Déjanos tu nombre, teléfono, cadena, correo opcional y el producto que te interesa.</li>
+          <li><strong>Te contactamos</strong><br>Confirmamos disponibilidad y cómo recibir tu segunda unidad gratis.</li>
+        </ol>
+      </div>
+    </section>
+    <section class="section" style="padding-top:0">
+      <div class="container faq">
+        <h2>Preguntas frecuentes</h2>
+        <p class="lead">Revisa estos puntos antes de registrarte.</p>
+        <details><summary>¿La unidad gratis es del mismo producto?</summary><p>Sí. Por cada unidad que pagas recibes otra igual sin costo, salvo que el producto indique otra condición.</p></details>
+        <details><summary>¿Registrarme tiene costo?</summary><p>No. El registro es gratuito y no compromete ninguna compra.</p></details>
+        <details><summary>¿Qué hacen con mis datos?</summary><p>Los usamos solo para contactarte sobre la promoción. Lee el <a href="{% url 'privacidad' %}">aviso de privacidad</a>.</p></details>
+        <details><summary>¿Hasta cuándo es válida?</summary><p>Hasta agotar existencias. Cada producto muestra sus propias condiciones.</p></details>
+      </div>
+    </section>
+{% endblock %}

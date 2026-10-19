@@ -1,0 +1,191 @@
+/* ==========================================================
+   Pharma Del · Estilos
+   Paleta tomada del logo. Cambia los colores aquí arriba.
+   ========================================================== */
+:root{
+  --navy:#1a3f8f;   /* azul marino */
+  --blue:#2d6cc0;   /* azul medio */
+  --lime:#a8c52a;   /* verde lima */
+  --green:#1e7a3c;  /* verde oscuro */
+  --ink:#0f1f3d;
+  --muted:#55657d;
+  --bg:#f5f8fc;
+  --card:#fff;
+  --line:#dce4ef;
+  --radius:14px;
+  --font-title:"Bricolage Grotesque","DM Sans",system-ui,sans-serif;
+  --font-body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--font-body)}
+h1,h2,h3{font-family:var(--font-title);line-height:1.1;margin:0}
+img{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--lime);outline-offset:2px}
+.container{max-width:1120px;margin:0 auto;padding:0 20px}
+.stripes{height:6px;background:linear-gradient(90deg,var(--navy) 25%,var(--blue) 25% 50%,var(--lime) 50% 75%,var(--green) 75%)}
+
+/* Botones */
+.btn{display:inline-block;border:0;border-radius:999px;padding:14px 26px;font:700 16px var(--font-body);text-decoration:none;cursor:pointer;transition:background .2s}
+.btn-primary{background:var(--navy);color:#fff}
+.btn-primary:hover{background:var(--blue)}
+.btn-green{background:var(--green);color:#fff}
+.btn-green:hover{background:#176230}
+.btn-block{display:block;width:100%;text-align:center}
+
+/* Barra superior y encabezado */
+.topbar{background:var(--navy);color:#dbe6ff;font-size:14px}
+.topbar .container{display:flex;justify-content:space-between;gap:12px;padding-top:8px;padding-bottom:8px}
+.site-header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.site-header .container{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo img{display:block;height:44px;width:auto}
+.nav{display:flex;align-items:center;gap:26px}
+.nav a{text-decoration:none;font-weight:500;color:var(--muted)}
+.nav a:hover{color:var(--navy)}
+.nav .cart-link{background:var(--lime);color:var(--ink);font-weight:700;padding:8px 16px;border-radius:999px}
+.nav .cart-link:hover{color:var(--ink);filter:brightness(.95)}
+
+/* Hero */
+.hero{background:#fff}
+.hero .container{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-top:56px;padding-bottom:64px}
+.hero h1{font-size:clamp(38px,6vw,68px);font-weight:800;letter-spacing:-.02em;color:var(--navy)}
+.hero p{max-width:46ch;font-size:18px;color:var(--muted);margin:18px 0 28px}
+.hero-art{position:relative;height:300px}
+.capsule{position:absolute;width:250px;height:100px;border-radius:999px;display:flex;overflow:hidden;transform:rotate(-24deg);box-shadow:0 14px 28px rgba(15,31,61,.18)}
+.capsule i{flex:1}
+.capsule i:first-child{background:var(--navy)}
+.capsule i:last-child{background:var(--lime)}
+.capsule.two{top:150px;left:70px}
+.capsule.two i:first-child{background:var(--blue)}
+.capsule.two i:last-child{background:var(--green)}
+.capsule.one{top:30px;left:10px}
+.badge{position:absolute;top:0;right:0;width:130px;height:130px;border-radius:50%;background:var(--lime);display:grid;place-items:center;text-align:center;font:800 28px/1 var(--font-title);transform:rotate(8deg)}
+.badge small{display:block;font:700 12px var(--font-body);margin-top:4px}
+
+/* Beneficios */
+.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:36px 0}
+.benefit h3{font-size:18px;margin-bottom:4px;color:var(--navy)}
+.benefit p{margin:0;color:var(--muted);font-size:15px}
+
+/* Secciones */
+.section{padding:56px 0}
+.section h2{font-size:clamp(28px,4vw,40px);color:var(--navy);margin-bottom:8px}
+.section .lead{color:var(--muted);margin:0 0 24px}
+
+/* Tienda */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font:500 14px var(--font-body);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.shop{display:grid;grid-template-columns:1fr 330px;gap:24px;align-items:start}
+.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.product{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:6px}
+.product .pill{width:60px;height:24px;border-radius:999px;border:1px solid var(--line);background:linear-gradient(90deg,var(--c) 50%,#fff 50%);transform:rotate(-20deg);margin:6px 0 12px}
+.product h3{font-size:18px}
+.product .desc{font-size:14px;color:var(--muted)}
+.product .price{font-weight:700;margin-top:auto;padding-top:8px}
+.product .promo{font-size:13px;font-weight:500;color:var(--green)}
+.product button{margin-top:8px;background:#fff;border:2px solid var(--navy);color:var(--navy);border-radius:999px;padding:9px;font:700 14px var(--font-body);cursor:pointer}
+.product button:hover{background:var(--navy);color:#fff}
+
+/* Pedido */
+.order{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;position:sticky;top:88px}
+.order h3{font-size:22px;margin-bottom:12px}
+.order .empty{color:var(--muted);font-size:14px;margin:0}
+.line{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.line.free{color:var(--green);font-weight:700}
+.qty{display:flex;align-items:center;gap:8px;margin-top:6px}
+.qty button{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:var(--bg);cursor:pointer;font-size:16px}
+.total{display:flex;justify-content:space-between;font:700 18px var(--font-body);margin:16px 0 12px}
+.savings{background:#eef6d3;color:#3d4d0a;border-radius:10px;padding:9px 12px;font-weight:700;font-size:14px;margin-bottom:12px}
+
+/* Cómo funciona y sucursales */
+.steps,.branches{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;list-style:none;padding:0;margin:0}
+.steps{counter-reset:paso}
+.steps li,.branch{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+.steps li{counter-increment:paso}
+.steps li::before{content:counter(paso);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;margin-bottom:12px}
+.branch h3{font-size:20px;color:var(--navy);margin-bottom:6px}
+.branch p{margin:0;color:var(--muted);font-size:15px}
+
+/* Pie de página */
+.site-footer{background:var(--ink);color:#b8c4d8;font-size:14px;margin-top:40px}
+.site-footer .container{padding-top:32px;padding-bottom:32px}
+.site-footer strong{color:#fff}
+.site-footer p{margin:0 0 10px}
+
+/* Responsive */
+@media (max-width:860px){
+  .hero .container,.shop,.steps,.branches,.benefits{grid-template-columns:1fr}
+  .hero-art{height:240px}
+  .capsule{width:200px;height:80px}
+  .capsule.two{top:130px}
+  .order{position:static}
+  .nav a:not(.cart-link){display:none}
+  .topbar .container{flex-direction:column;gap:2px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* ==========================================================
+   Sitio de varias páginas
+   ========================================================== */
+.nav a[aria-current="page"]{color:var(--navy);font-weight:700;box-shadow:0 3px 0 var(--lime)}
+.page-head{background:#fff;border-bottom:1px solid var(--line)}
+.page-head .container{padding-top:40px;padding-bottom:36px}
+.page-head h1{font-size:clamp(32px,5vw,52px);font-weight:800;color:var(--navy);letter-spacing:-.02em}
+.page-head p{margin:10px 0 0;color:var(--muted);max-width:56ch}
+.products{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+.order{position:static;max-width:680px}
+.order .again{text-align:center;margin:14px 0 0;font-size:14px}
+.cta-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cta-cards a{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;text-decoration:none;border-top:5px solid var(--lime)}
+.cta-cards a:nth-child(2){border-top-color:var(--blue)}
+.cta-cards a:nth-child(3){border-top-color:var(--green)}
+.cta-cards h3{font-size:22px;color:var(--navy);margin-bottom:6px}
+.cta-cards p{margin:0;color:var(--muted);font-size:15px}
+.cta-cards a:hover{border-color:var(--navy)}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 20px;margin-bottom:10px}
+.faq summary{font-weight:700;cursor:pointer}
+.faq details p{margin:10px 0 0;color:var(--muted)}
+.contact{background:var(--navy);color:#dbe6ff;border-radius:var(--radius);padding:24px;margin-top:20px}
+.contact strong{color:#fff}
+.contact p{margin:0 0 6px}
+@media (max-width:860px){
+  .site-header .container{height:auto;flex-wrap:wrap;padding-top:12px;padding-bottom:10px;gap:8px}
+  .nav{width:100%;overflow-x:auto;gap:18px;padding-bottom:6px;white-space:nowrap}
+  .nav a:not(.cart-link){display:inline}
+  .cta-cards{grid-template-columns:1fr}
+}
+
+/* ==========================================================
+   Django: formulario, fotos de producto y textos largos
+   ========================================================== */
+.btn-outline{margin-top:8px;text-align:center;background:#fff;border:2px solid var(--navy);color:var(--navy);padding:9px 14px;font-size:14px}
+.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-ghost{margin-left:8px;background:transparent;color:var(--navy);border:2px solid var(--navy)}
+.btn-ghost:hover{background:var(--navy);color:#fff}
+.product .foto{width:100%;height:170px;object-fit:cover;border-radius:10px;margin-bottom:8px;background:var(--bg)}
+.form{max-width:560px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+.field{margin-bottom:18px}
+.field label{display:block;font-weight:700;margin-bottom:6px}
+.field input[type=text],.field input[type=email],.field select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font:400 16px var(--font-body);background:#fff;color:var(--ink)}
+.field.check{display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap}
+.field.check input{margin-top:5px;width:18px;height:18px}
+.field.check label{font-weight:400;margin:0;flex:1}
+.field.has-error input,.field.has-error select{border-color:#c0392b}
+.errorlist{list-style:none;padding:0;margin:6px 0 0;color:#b03a2e;font-size:14px;width:100%}
+.alert{background:#fdecea;border:1px solid #f5c6cb;border-radius:10px;padding:10px 14px;margin-bottom:18px}
+.alert .errorlist{margin:0}
+.note{font-size:14px;color:var(--muted);margin:0 0 18px}
+.prose{max-width:760px}
+.prose h2{font-size:24px;margin:28px 0 6px}
+.prose p{margin:0;color:var(--muted)}
+.site-footer a{color:#fff}
+.resumen{margin:0 0 18px;font-size:14px;color:var(--muted)}
+.resumen summary{cursor:pointer;color:var(--navy);font-weight:500}
+.resumen p{margin:8px 0 0}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.error-page{text-align:center;padding:80px 0}
+.error-page h1{font-size:72px;color:var(--navy)}
+.hint{display:block;margin-top:5px;font-size:13px;color:var(--muted)}

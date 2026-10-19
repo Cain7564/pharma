@@ -1,0 +1,23 @@
+{% extends "tienda/base.html" %}
+{% block title %}Aviso de privacidad{% endblock %}
+{% block content %}
+    <div class="page-head"><div class="container"><h1>Aviso de privacidad</h1><p>Cómo usamos los datos personales que nos entregas al registrarte.</p></div></div>
+    <section class="section">
+      <div class="container prose">
+        <h2>Quién es responsable</h2>
+        <p>{{ empresa.responsable_datos }} es responsable de los datos que recibe a través de este sitio. Puedes escribirnos a <a href="mailto:{{ empresa.correo_datos }}">{{ empresa.correo_datos }}</a>.</p>
+        <h2>Qué datos recopilamos</h2>
+        <p>Tu nombre, número de DPI, teléfono, correo electrónico (opcional), cadena de farmacias, el departamento desde donde te registras y el producto que te interesa. Solo pedimos lo necesario para atender tu registro.</p>
+        <h2>Para qué los usamos</h2>
+        <p>Para contactarte sobre la promoción 1x1 y confirmar tu producto. Usamos el DPI para confirmar tu identidad y evitar registros duplicados. El departamento nos sirve para conocer, en forma agrupada, en qué zonas hay más interés por cada producto. No los usamos para otros fines ni los vendemos o compartimos con terceros para su publicidad.</p>
+        <h2>Tu consentimiento</h2>
+        <p>Solo guardamos tus datos si marcas la casilla de aceptación del formulario. Puedes retirar tu consentimiento cuando quieras.</p>
+        <h2>Cuánto tiempo los conservamos</h2>
+        <p>Mientras dure la promoción y el tiempo necesario para atender tu registro. Después los eliminamos.</p>
+        <h2>Tus derechos</h2>
+        <p>Puedes pedirnos que te mostremos, corrijamos o eliminemos tus datos. Escríbenos al correo indicado arriba y te responderemos.</p>
+        <h2>Cómo los protegemos</h2>
+        <p>Los registros solo se pueden consultar desde un panel privado con usuario y contraseña, al que accede personal autorizado. En los listados y exportaciones el DPI aparece oculto salvo sus últimos cuatro dígitos, y el mapa de productos solo muestra cifras agrupadas.</p>
+      </div>
+    </section>
+{% endblock %}

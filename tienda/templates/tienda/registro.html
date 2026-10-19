@@ -1,0 +1,32 @@
+{% extends "tienda/base.html" %}
+{% block title %}Regístrate{% endblock %}
+{% block content %}
+    <div class="page-head"><div class="container"><h1>Regístrate para tu 1x1</h1><p>Déjanos tus datos y el producto que te interesa. Nos comunicaremos contigo.</p></div></div>
+    <section class="section">
+      <div class="container">
+        <form class="form" method="post" novalidate>
+          {% csrf_token %}
+          {% if form.non_field_errors %}<div class="alert" role="alert">{{ form.non_field_errors }}</div>{% endif %}
+          {% for campo in form.visible_fields %}{% if campo.name != 'sitio_web' %}
+          <div class="field{% if campo.errors %} has-error{% endif %}{% if campo.field.widget.input_type == 'checkbox' %} check{% endif %}">
+            {% if campo.field.widget.input_type == 'checkbox' %}
+              {{ campo }}
+              <label for="{{ campo.id_for_label }}">He leído y acepto el <a href="{% url 'privacidad' %}">aviso de privacidad</a></label>
+            {% else %}
+              <label for="{{ campo.id_for_label }}">{{ campo.label }}</label>
+              {{ campo }}
+              {% if campo.help_text %}<small class="hint">{{ campo.help_text }}</small>{% endif %}
+            {% endif %}
+            {{ campo.errors }}
+          </div>
+          {% endif %}{% endfor %}
+          <div class="hp" aria-hidden="true"><label>No llenes este campo {{ form.sitio_web }}</label></div>
+          <details class="resumen">
+            <summary>Ver resumen del aviso de privacidad sin salir del formulario</summary>
+            <p>Guardamos tu nombre, DPI, teléfono, correo opcional, cadena de farmacias, departamento y producto de interés para contactarte sobre la promoción 1x1, confirmar tu identidad y evitar registros duplicados. Solo personal autorizado puede consultarlos y puedes pedirnos corregirlos o eliminarlos en {{ empresa.correo_datos }}. <a href="{% url 'privacidad' %}">Leer el aviso completo</a>.</p>
+          </details>
+          <button class="btn btn-green" type="submit">Enviar registro</button>
+        </form>
+      </div>
+    </section>
+{% endblock %}

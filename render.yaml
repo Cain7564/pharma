@@ -1,0 +1,40 @@
+# Blueprint de Render: crea el sitio web y la base de datos PostgreSQL.
+# En Render: New + > Blueprint > elige este repositorio.
+databases:
+  - name: pharma-del-db
+    databaseName: pharma_del
+    user: pharma_del
+    plan: free
+
+services:
+  - type: web
+    name: pharma-del
+    runtime: python
+    plan: free
+    buildCommand: "bash build.sh"
+    startCommand: "gunicorn config.wsgi:application --bind 0.0.0.0:$PORT --log-file -"
+    healthCheckPath: /healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.3
+      - key: DATABASE_URL
+        fromDatabase:
+          name: pharma-del-db
+          property: connectionString
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DJANGO_DEBUG
+        value: "0"
+      # Fotos de productos: sin disco persistente se pierden al reiniciar (ver README).
+      - key: DJANGO_SERVE_MEDIA
+        value: "1"
+      # Usuario del panel privado (la contraseña se genera: revísala en Environment).
+      - key: DJANGO_SUPERUSER_USERNAME
+        value: admin
+      - key: DJANGO_SUPERUSER_EMAIL
+        value: info@pharmadel.com
+      - key: DJANGO_SUPERUSER_PASSWORD
+        generateValue: true
+      # 1 = carga productos de ejemplo si faltan; ponlo en 0 cuando tengas los tuyos.
+      - key: CARGAR_EJEMPLOS
+        value: "1"

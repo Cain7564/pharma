@@ -1,0 +1,12 @@
+{% load static %}
+<article class="product">
+  {% if producto.foto %}
+    <img class="foto" src="{{ producto.foto.url }}" alt="{{ producto.nombre }}">
+  {% else %}
+    <div class="pill" style="--c:var(--blue)"></div>
+  {% endif %}
+  <h3>{{ producto.nombre }}</h3>
+  <span class="desc">{{ producto.descripcion }}</span>
+  <span class="promo">{{ producto.condiciones }}</span>
+  <a class="btn btn-outline" href="{% url 'registro' %}?producto={{ producto.id }}">Me interesa</a>
+</article>

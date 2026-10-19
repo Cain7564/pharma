@@ -1,0 +1,17 @@
+{% extends "admin/base.html" %}{% load static %}
+{% block extrahead %}{{ block.super }}<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">{% endblock %}
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" href="{% static 'tienda/admin.css' %}">{% endblock %}
+{% block branding %}<a class="pharma-brand" href="{% url 'admin:index' %}"><span class="pharma-mark">✚</span><span>Pharma Del<small>ADMINISTRACIÓN</small></span></a>{% endblock %}
+{% block footer %}{{ block.super }}
+{% if user.is_staff and perms.tienda.view_producto %}
+<aside class="stock-chat" aria-label="Asistente de inventario">
+  <button id="chat-toggle" class="chat-toggle" aria-expanded="false" aria-controls="chat-panel">✦ Asistente de alertas{% if panel_alertas %} · {{ panel_alertas }}{% endif %}</button>
+  <section id="chat-panel" hidden data-url="{% url 'alertas_chat' %}" data-send-url="{% url 'alertas_enviar' %}">{% csrf_token %}
+    <div class="chat-heading"><strong>Tu asistente de inventario</strong><p>Información para reponer a tiempo</p></div>
+    <div id="chat-log" role="log" aria-live="polite" aria-relevant="additions"></div>
+    <div class="chat-actions"><button type="button" data-query="alertas">Por agotarse</button><button type="button" data-query="agotados">Agotados</button><button type="button" data-query="pendientes">Sin inventario</button><button type="button" id="chat-send" class="chat-send">Enviar alerta al teléfono</button></div>
+    <form id="chat-form"><label for="chat-input">Buscar medicamento por nombre</label><div><input id="chat-input" maxlength="120" placeholder="Ej. Vitamina C" required autocomplete="off"><button type="submit">Consultar</button></div></form>
+    <small class="chat-note">Datos del inventario registrado. El mensaje solo se envía al pulsar el botón verde; no ofrece indicaciones médicas.</small>
+  </section>
+</aside><script src="{% static 'tienda/admin-chat.js' %}" defer></script>
+{% endif %}{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+{% block title %}Mapa de productos por departamento | {{ site_title }}{% endblock %}
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" href="{% static 'tienda/css/mapa.css' %}">{% endblock %}
+{% block breadcrumbs %}<div class="breadcrumbs"><a href="{% url 'admin:index' %}">Inicio</a> &rsaquo; Mapa de productos</div>{% endblock %}
+{% block content %}
+<div id="mapa-app" data-geo="{% static 'tienda/data/departamentos.json' %}" data-datos="{% url 'mapa_datos' %}">
+  <p class="mapa-nota">Basado en los <strong>registros de interés</strong> de clientes (no en ventas). Se muestran solo cifras agrupadas por departamento.</p>
+  <div class="mapa-filtros">
+    <label>Mostrar
+      <select id="f-producto"><option value="">Producto líder en cada departamento</option></select>
+    </label>
+    <label>Periodo
+      <select id="f-dias"><option value="">Todo el tiempo</option><option value="90">Últimos 90 días</option><option value="30">Últimos 30 días</option></select>
+    </label>
+  </div>
+  <p id="mapa-vacio" class="mapa-vacio" hidden>Todavía no hay registros con departamento. Cuando lleguen, aparecerán aquí.</p>
+  <div class="mapa-grid">
+    <div>
+      <svg id="mapa" role="group" aria-label="Mapa de Guatemala por departamentos"></svg>
+      <div id="leyenda" class="mapa-leyenda"></div>
+    </div>
+    <aside id="panel" class="mapa-panel" aria-live="polite"></aside>
+  </div>
+  <h2>Resumen por departamento</h2>
+  <table id="tabla"><thead><tr><th>Departamento</th><th>Producto líder</th><th>Registros del líder</th><th>Total de registros</th></tr></thead><tbody></tbody></table>
+  <p class="mapa-fuente">Límites departamentales: Natural Earth (dominio público).</p>
+</div>
+<script src="{% static 'tienda/js/mapa.js' %}"></script>
+{% endblock %}

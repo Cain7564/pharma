@@ -1,0 +1,16 @@
+{% extends "tienda/base.html" %}
+{% block title %}Productos{% endblock %}
+{% block content %}
+    <div class="page-head"><div class="container"><h1>Productos con 1x1</h1><p>Elige el que te interesa y regístrate. Te contactamos para confirmar disponibilidad.</p></div></div>
+    <section class="section">
+      <div class="container">
+        {% if productos %}
+        <div class="products">
+          {% for producto in productos %}{% include "tienda/_producto.html" %}{% endfor %}
+        </div>
+        {% else %}
+        <p class="lead">Pronto publicaremos nuestros productos con 1x1. Vuelve en unos días.</p>
+        {% endif %}
+      </div>
+    </section>
+{% endblock %}
